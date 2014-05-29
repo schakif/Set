@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 
+//added a comment
 public class GameTest extends TestCase 
 {
   public void testNewGame()
