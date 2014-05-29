@@ -6,6 +6,8 @@ public class Card
   private int shading;
   private int shape;
   
+  // This is a comment
+  
   public Card(int theQuantity, int theColor, int theShading, int theShape)
   {
     quantity = fixValue(theQuantity);
