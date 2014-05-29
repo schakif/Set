@@ -42,15 +42,8 @@ public class Deck
     {
       String line;
       BufferedReader infile = new BufferedReader(new FileReader(filename));
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      int derp = 0;
-=======
-      //int pos = 0;
->>>>>>> Stashed changes
-=======
-      int koalas = 0;
->>>>>>> 13c11a5d96c81bf0526986a9da712b31bdbc6111
+      
+      //int koalas = 0;
   
       while((line = infile.readLine()) != null)
       {
