@@ -42,7 +42,11 @@ public class Deck
     {
       String line;
       BufferedReader infile = new BufferedReader(new FileReader(filename));
+<<<<<<< Updated upstream
       int derp = 0;
+=======
+      //int pos = 0;
+>>>>>>> Stashed changes
   
       while((line = infile.readLine()) != null)
       {
