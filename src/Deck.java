@@ -41,7 +41,7 @@ public class Deck
     {
       String line;
       BufferedReader infile = new BufferedReader(new FileReader(filename));
-      int position = 0;
+      //int position = 0;
   
       while((line = infile.readLine()) != null)
       {
@@ -67,6 +67,7 @@ public class Deck
         theCards.add(new Card(quantity, color, shading, shape));
         nextCardIndex = 0;
       }
+      infile.close();
     }
     catch(Exception e)
     {
