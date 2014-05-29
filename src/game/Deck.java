@@ -42,7 +42,7 @@ public class Deck
     {
       String line;
       BufferedReader infile = new BufferedReader(new FileReader(filename));
-      //int position = 0;
+      int koalas = 0;
   
       while((line = infile.readLine()) != null)
       {
