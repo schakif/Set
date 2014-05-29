@@ -22,7 +22,7 @@ public class Table
   {
     if(!contains(c1) || !contains(c2) || !contains(c3))
       return;
-    if(!c1.isSet(c2, c3))
+    if(!Card.isSet(c1, c2, c3))
       return;
     
     TableNode prev = findPrev(c1);
@@ -123,7 +123,7 @@ public class Table
           Card c2 = n2.getCard();
           Card c3 = n3.getCard();
           
-          if(c1.isSet(c2, c3))
+          if(Card.isSet(c1, c2, c3))
             count++;
           
           n3 = n3.getNext();
