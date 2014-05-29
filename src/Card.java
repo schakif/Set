@@ -7,6 +7,7 @@ public class Card
   private int shape;
   
   // This is a comment
+  // This is also a comment
   
   public Card(int theQuantity, int theColor, int theShading, int theShape)
   {
