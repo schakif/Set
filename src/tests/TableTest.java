@@ -140,6 +140,35 @@ public class TableTest extends TestCase
     assertEquals(12, t.numCards());
     assertEquals(0, t.numSets());
   }
+  
+  public void test12Cards3FromEnd() {
+	  Table t = makeTable("GameTests/OurTestData.dat");
+	  
+	  assertEquals(12, t.numCards());
+	  
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), null);
+	  assertTrue(t.getCard(0).equals(new Card(2,2,1,3)));
+	  assertTrue(t.getCard(1).equals(new Card(2,2,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(2,2,1,1)));
+	  
+	  assertEquals(9, t.numCards());
+	  
+  }
+  
+  public void test12Cards3FromMiddle() {
+	  Table t = makeTable("GameTests/OurTestData.dat");
+	  
+	  assertEquals(12, t.numCards());
+	  
+	  t.removeSet(new Card(1,2,1,1), new Card(1,2,1,2), new Card(1,2,1,3), null);
+	  assertTrue(t.getCard(6).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(7).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(8).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(9, t.numCards());
+	  
+  }
+  
   public void testSlidesDownProperly(){
 	  Table t = new Table();
 	  //avoid the shuffling
@@ -160,6 +189,46 @@ public class TableTest extends TestCase
 	  assertTrue(t.getCard(1).equals(new Card(2,2,1,2)));
 	  assertTrue(t.getCard(2).equals(new Card(2,2,1,1)));
   }
+  
+  
+  public void test12CardsPut3AtEnd() {
+	  Table t = makeTable("GameTests/OurTestData.dat");
+	  
+	  assertEquals(12, t.numCards());
+	  
+	  ArrayList<Card> newCards = new ArrayList<Card>(3);
+	  newCards.add(new Card(3,3,3,3));
+	  newCards.add(new Card(2,2,2,2));
+	  newCards.add(new Card(1,1,1,1));
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), newCards);
+	  
+	  assertTrue(t.getCard(9).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(10).equals(new Card(2,2,2,2)));
+	  assertTrue(t.getCard(11).equals(new Card(3,3,3,3)));
+	  
+	  assertEquals(12, t.numCards());
+	  
+  }
+  
+  public void test12CardsPut3AtMiddle() {
+	  Table t = makeTable("GameTests/OurTestData.dat");
+	  
+	  assertEquals(12, t.numCards());
+	  
+	  ArrayList<Card> newCards = new ArrayList<Card>(3);
+	  newCards.add(new Card(3,3,3,3));
+	  newCards.add(new Card(2,2,2,2));
+	  newCards.add(new Card(1,1,1,1));
+	  t.removeSet(new Card(1,2,1,1), new Card(1,2,1,2), new Card(1,2,1,3), newCards);
+	  
+	  assertTrue(t.getCard(6).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(7).equals(new Card(2,2,2,2)));
+	  assertTrue(t.getCard(8).equals(new Card(3,3,3,3)));
+	  
+	  assertEquals(12, t.numCards());
+	  
+  }
+  
   public void testRemovingAndAddingProperly(){
 	  Table t = new Table();
 	  //avoid shuffling
@@ -184,6 +253,136 @@ public class TableTest extends TestCase
 	  assertEquals(t.getCard(1),(new Card(2,2,2,2)));
 	  assertEquals(t.getCard(2),(new Card(1,1,1,1)));
   }
+  
+  public void test15CardsTakeFromFront() {
+	  Table t = makeTable("GameTests/OurBigTestData.dat");
+	  
+	  assertEquals(15, t.numCards());
+	  
+	  t.removeSet(new Card(3,1,1,1), new Card(3,2,2,2), new Card(3,3,3,3), null);
+	  
+	  assertTrue(t.getCard(0).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(1).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(12, t.numCards());
+  }
+  public void test15CardsTakeFromEnd() {
+	  
+	  Table t = makeTable("GameTests/OurBigTestData.dat");
+	  
+	  assertEquals(15, t.numCards());
+	  
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), null);
+	  
+	  assertTrue(t.getCard(0).equals(new Card(3,3,3,3)));
+	  assertTrue(t.getCard(1).equals(new Card(3,2,2,2)));
+	  assertTrue(t.getCard(2).equals(new Card(3,1,1,1)));
+	  
+	  assertEquals(12, t.numCards());
+	  
+  }
+  public void test15CardsTakeFromMiddle() {
+	  Table t = makeTable("GameTests/OurBigTestData.dat");
+	  
+	  assertEquals(15, t.numCards());
+	  
+	  t.removeSet(new Card(1,2,1,1), new Card(1,2,1,2), new Card(1,2,1,3), null);
+	  
+	  assertTrue(t.getCard(9).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(10).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(11).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(12, t.numCards());
+	  
+  }
+  
+  public void test18CardsTakeFromFront() {
+	  Table t = makeTable("GameTests/OurBiggerTestData.dat");
+	  
+	  assertEquals(18, t.numCards());
+	  
+	  t.removeSet(new Card(3,2,1,1), new Card(3,2,1,2), new Card(3,2,1,3), null);
+	  
+	  assertTrue(t.getCard(0).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(1).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(15, t.numCards());
+  }
+  public void test18CardsTakeFromEnd() {
+	  
+	  Table t = makeTable("GameTests/OurBiggerTestData.dat");
+	  
+	  assertEquals(18, t.numCards());
+	  
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), null);
+	  
+	  assertTrue(t.getCard(0).equals(new Card(3,2,1,3)));
+	  assertTrue(t.getCard(1).equals(new Card(3,2,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(3,2,1,1)));
+	  
+	  assertEquals(15, t.numCards());
+	  
+  }
+  public void test18CardsTakeFromMiddle() {
+	  Table t = makeTable("GameTests/OurBiggerTestData.dat");
+	  
+	  assertEquals(18, t.numCards());
+	  
+	  t.removeSet(new Card(1,2,1,1), new Card(1,2,1,2), new Card(1,2,1,3), null);
+	  
+	  assertTrue(t.getCard(12).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(13).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(14).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(15, t.numCards());
+	  
+  }
+  
+  public void test9CardsTakeFromFront() {
+	  Table t = makeTable("GameTests/OurSmallerTestData.dat");
+	  
+	  assertEquals(9, t.numCards());
+	  
+	  t.removeSet(new Card(2,1,1,1), new Card(2,1,1,2), new Card(2,1,1,3), null);
+	  
+	  assertTrue(t.getCard(0).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(1).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(6, t.numCards());
+  }
+  public void test9CardsTakeFromEnd() {
+	  
+	  Table t = makeTable("GameTests/OurSmallerTestData.dat");
+	  
+	  assertEquals(9, t.numCards());
+	  
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), null);
+	  
+	  assertTrue(t.getCard(0).equals(new Card(2,1,1,3)));
+	  assertTrue(t.getCard(1).equals(new Card(2,1,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(2,1,1,1)));
+	  
+	  assertEquals(6, t.numCards());
+	  
+  }
+  public void test9CardsTakeFromMiddle() {
+	  Table t = makeTable("GameTests/OurSmallerTestData.dat");
+	  
+	  assertEquals(9, t.numCards());
+	  
+	  t.removeSet(new Card(1,2,1,1), new Card(1,2,1,2), new Card(1,2,1,3), null);
+	  
+	  assertTrue(t.getCard(3).equals(new Card(1,1,1,1)));
+	  assertTrue(t.getCard(4).equals(new Card(1,1,1,2)));
+	  assertTrue(t.getCard(5).equals(new Card(1,1,1,3)));
+	  
+	  assertEquals(6, t.numCards());
+	  
+  }
+  
   private Table makeTable(String filename)
   {
     Deck d = new Deck(filename);
