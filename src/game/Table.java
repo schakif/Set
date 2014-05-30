@@ -9,22 +9,30 @@ import java.util.LinkedList;
 
 public class Table {
 
-	private LinkedList<Card> table;
+	private ArrayList<Card> table;
 
 	public Table() {
-		table = new LinkedList<Card>();
+		table = new ArrayList<Card>();
 	}
 
 	/**
-	 * This method adds a Card to the table.
+	 * This method adds a Card to the front of the table.
 	 * 
 	 * @param card
 	 *            that will be added: card
 	 */
 	public void add(Card card) {
-		table.addFirst(card);
+		table.add(0, card);
 	}
-
+	/**
+	 * This method adds a Card to the back of the table.
+	 * 
+	 * @param card
+	 *            that will be added: card
+	 */
+	public void addLast(Card card){
+		table.add(card);
+	}
 	/**
 	 * Removes a set and refills the board if given new cards. Puts new cards
 	 * into old cards place if cards are added, else slides old cards into new
@@ -62,12 +70,10 @@ public class Table {
 
 		// If there are 12 or more cards on the table,
 		// we do not add cards this round.
-		// we also do not add cards if we cannot replace the entire set
 		if (table.size() < 15) {
 			// there may or may not be cards left in the deck
 			if (!newCards.isEmpty())
 				table.set(indexes[0], newCards.remove(0));
-
 			if (!newCards.isEmpty())
 				table.set(indexes[1], newCards.remove(0));
 
@@ -82,12 +88,12 @@ public class Table {
 		// put the last card in the first empty space
 		for (int j = 0; j < table.size() - 1; j++) {
 			if (table.get(j) == null) {
-				table.set(j, table.removeLast());
+				table.set(j, table.remove(table.size()-1));
 				j--;// make sure that space isn't still null
 			}
 		}
-		if (table.getLast() == null) {
-			table.removeLast();
+		if (table.get(table.size()-1) == null) {
+			table.remove(table.size()-1);
 		}
 	}
 

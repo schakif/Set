@@ -1,4 +1,6 @@
 package tests;
+import java.util.ArrayList;
+
 import game.Card;
 import game.Deck;
 import game.Table;
@@ -138,7 +140,50 @@ public class TableTest extends TestCase
     assertEquals(12, t.numCards());
     assertEquals(0, t.numSets());
   }
-  
+  public void testSlidesDownProperly(){
+	  Table t = new Table();
+	  //avoid the shuffling
+	  t.addLast(new Card(1,1,1,1));
+	  t.addLast(new Card(1,1,1,2));
+	  t.addLast(new Card(1,1,1,3));
+	  t.addLast(new Card(1,2,1,1));
+	  t.addLast(new Card(1,2,1,2));
+	  t.addLast(new Card(1,2,1,3));
+	  t.addLast(new Card(2,1,1,1));
+	  t.addLast(new Card(2,1,1,2));
+	  t.addLast(new Card(2,1,1,3));
+	  t.addLast(new Card(2,2,1,1));
+	  t.addLast(new Card(2,2,1,2));
+	  t.addLast(new Card(2,2,1,3));
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), null);
+	  assertTrue(t.getCard(0).equals(new Card(2,2,1,3)));
+	  assertTrue(t.getCard(1).equals(new Card(2,2,1,2)));
+	  assertTrue(t.getCard(2).equals(new Card(2,2,1,1)));
+  }
+  public void testRemovingAndAddingProperly(){
+	  Table t = new Table();
+	  //avoid shuffling
+	  t.addLast(new Card(1,1,1,1));
+	  t.addLast(new Card(1,1,1,2));
+	  t.addLast(new Card(1,1,1,3));
+	  t.addLast(new Card(1,2,1,1));
+	  t.addLast(new Card(1,2,1,2));
+	  t.addLast(new Card(1,2,1,3));
+	  t.addLast(new Card(2,1,1,1));
+	  t.addLast(new Card(2,1,1,2));
+	  t.addLast(new Card(2,1,1,3));
+	  t.addLast(new Card(2,2,1,1));
+	  t.addLast(new Card(2,2,1,2));
+	  t.addLast(new Card(2,2,1,3));
+	  ArrayList<Card> newCards = new ArrayList<Card>(3);
+	  newCards.add(new Card(3,3,3,3));
+	  newCards.add(new Card(2,2,2,2));
+	  newCards.add(new Card(1,1,1,1));
+	  t.removeSet(new Card(1,1,1,1), new Card(1,1,1,2), new Card(1,1,1,3), newCards);
+	  assertEquals(t.getCard(0),(new Card(3,3,3,3)));
+	  assertEquals(t.getCard(1),(new Card(2,2,2,2)));
+	  assertEquals(t.getCard(2),(new Card(1,1,1,1)));
+  }
   private Table makeTable(String filename)
   {
     Deck d = new Deck(filename);

@@ -41,6 +41,7 @@ public class SetTest {
 		Card c3 = new Card(2,1,3,3);
 		
 		try{
+			@SuppressWarnings("unused")
 			Set set1 = new Set(c1, c2, c3);
 			fail();
 		}
