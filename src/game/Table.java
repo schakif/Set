@@ -1,20 +1,20 @@
 package game;
-
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Table
 {
   
-  private LinkedList<Card> table;
+  private ArrayList<Card> table;
   
   public Table()
   {
-    table = new LinkedList<Card>();
+    table = new ArrayList<Card>();
   }
   
   public void add(Card card)
   {	  
-	  table.addFirst(card);
+	  table.add(0, card);
   }
   
   /**
@@ -51,9 +51,9 @@ public class Table
     int index2 = 1;
     int index3 = 2;
     
-    LinkedList<Set> setList = new LinkedList<Set>();
-    
     Card n1 = null;
+    
+    LinkedList<Set> setList = new LinkedList<Set>();
     
     if (table.size() > 0) {
     	n1 = table.get(index1);

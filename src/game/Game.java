@@ -1,9 +1,20 @@
 package game;
+
+/**
+ * <p>
+ * This class holds the logic of the game set.
+ * i.e. how long a round is, what determines the end of the round,
+ * what determines the end of the game, etc. <p>
+ *
+ */
 public class Game
 {
   private Table t;
   private Deck d;
   
+  /**
+   * Creates an instance of the game by creating an instance of Table and Deck.
+   */
   public Game()
   {
     t = new Table();
@@ -13,11 +24,13 @@ public class Game
     for(int i = 0; i < 12; i++)
       t.add(d.getNext());
   }
-  
-  public Table getTable() {
-	  return t;
-  }
 
+/**
+ * <p>
+ * Creates an instance of the game with an instance of Table and an instance of Deck that
+ * was built from a file. <p>
+ * @param filename
+ */
   public Game(String filename)
   {
     t = new Table();
@@ -28,16 +41,27 @@ public class Game
       t.add(d.getNext());
   }
   
+  /**
+   * Returns the number of sets in the table
+   * @return
+   */
   public int numSets()
   {
     return t.numSets();
   }
   
+  /**
+   * Returns the number of cards in the table
+   * @return
+   */
   public int numCards()
   {
     return t.numCards();
   }
-  
+  /**
+   * If there are not more sets in the table, returns false. Otherwise the game continues.
+   * @return
+   */
   public boolean isGameOver()
   {
     if(d.hasNext())
@@ -48,6 +72,11 @@ public class Game
     return t.numSets() == 0;
   }
   
+  /**
+   * <p>
+   * Plays a round of the game set. Adding cards to the table if necessary,
+   * ending when a set is found. <p>
+   */
   public void playRound()
   {
     // If the game is over, they shouldn't have called this...
