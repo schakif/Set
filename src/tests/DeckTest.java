@@ -3,6 +3,7 @@ import game.Card;
 import game.Deck;
 import junit.framework.TestCase;
 
+
 public class DeckTest extends TestCase {
   
   public void testNewDeck() 

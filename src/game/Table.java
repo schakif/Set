@@ -1,20 +1,20 @@
 package game;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Table
 {
   
-  private LinkedList<Card> table;
+  private ArrayList<Card> table;
   
   public Table()
   {
-    table = new LinkedList<Card>();
+    table = new ArrayList<Card>();
   }
   
   public void add(Card card)
   {	  
-	  table.addFirst(card);
+	  table.add(0, card);
   }
   
   public void removeSet(Card c1, Card c2, Card c3)

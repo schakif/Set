@@ -6,11 +6,18 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class holds a deck of 81 cards for the game set.
+ *
+ */
 public class Deck
 {
   private ArrayList<Card> theCards;
   private int nextCardIndex;
   
+  /**
+   * This public constructor creates a deck with one of every card and shuffles them.
+   */
   public Deck()
   {
     theCards = new ArrayList<Card>(81);
@@ -34,6 +41,10 @@ public class Deck
     nextCardIndex = 0;
   }
   
+  /**
+   * This public constructor makes the cards in a deck based off of information from a file.
+   * @param filename
+   */
   public Deck(String filename)
   {
     theCards = new ArrayList<Card>(81);
@@ -77,11 +88,19 @@ public class Deck
     }
   }
     
+  /**
+   * Returns true if there are still cards in the deck. Else returns false.
+   * @return
+   */
   public boolean hasNext()
   {
     return nextCardIndex < theCards.size();
   }
     
+  /**
+   * Returns the next card in the deck. If no cards are left, returns null.
+   * @return
+   */
   public Card getNext()
   {
     if(nextCardIndex > 80)
