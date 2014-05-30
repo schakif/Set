@@ -1,8 +1,9 @@
+package game;
+
 /**
  * This class is meant to be able to make a containment of a set on a table, as well as print out the set itself. It checks to make sure 
  * the 3 cards are a set, and then puts and returns them in a array of 3 indices as a collection of the 3 cards. 
  */
-package game;
 
 public class Set {
 	
