@@ -76,7 +76,7 @@ public class Game
           Card c2 = t.getCard(j);
           Card c3 = t.getCard(k);
           
-          if(c1.isSet(c2, c3))
+          if(Card.isSet(c1, c2, c3))
           {
             t.removeSet(c1, c2, c3);
 
