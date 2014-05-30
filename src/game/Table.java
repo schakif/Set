@@ -17,6 +17,12 @@ public class Table
 	  table.addFirst(card);
   }
   
+  /**
+   * 
+   * @param c1
+   * @param c2
+   * @param c3
+   */
   public void removeSet(Card c1, Card c2, Card c3)
   {
     if(!table.contains(c1) || !table.contains(c2) || !table.contains(c3))
@@ -39,10 +45,8 @@ public class Table
 	  return table.get(index);
   }
   
-  public int numSets()
-  {    
-    int count = 0;
-    
+  public LinkedList<Set> returnSets()
+  {        
     int index1 = 0;
     int index2 = 1;
     int index3 = 2;
@@ -66,8 +70,12 @@ public class Table
         while(index3 < table.size())
         {
           
-          if(Card.isSet(n1, n2, n3))
-            count++;
+          if(Card.isSet(n1, n2, n3)){
+            
+        	  Set s = new Set(n1, n2, n3);
+        	  setList.add(s);
+          
+          }
           
           index3++;
           if (index3 < table.size()) {
@@ -95,8 +103,13 @@ public class Table
       
     }
     
-    return count;
+    return setList;
   }
-        
-      
+  
+  public int numSets(){
+       LinkedList<Set> l1 = returnSets();
+       return l1.size();
+       
+  }
+  
 }

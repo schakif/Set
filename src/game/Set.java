@@ -1,3 +1,7 @@
+/**
+ * This class is meant to be able to make a containment of a set on a table, as well as print out the set itself. It checks to make sure 
+ * the 3 cards are a set, and then puts and returns them in a array of 3 indices as a collection of the 3 cards. 
+ */
 package game;
 
 public class Set {
@@ -13,7 +17,7 @@ public class Set {
 		// Card.isSet(c1,c2,c3)
 		// if it is not a set throw an exception
 		
-		if (!c1.isSet(c2, c3)) {
+		if (!Card.isSet(c1,c2, c3)) {
 			throw new RuntimeException("Bad Set");
 		}
 		

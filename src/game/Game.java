@@ -13,6 +13,10 @@ public class Game
     for(int i = 0; i < 12; i++)
       t.add(d.getNext());
   }
+  
+  public Table getTable() {
+	  return t;
+  }
 
   public Game(String filename)
   {
