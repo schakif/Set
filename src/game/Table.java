@@ -21,7 +21,7 @@ public class Table
   {
     if(!table.contains(c1) || !table.contains(c2) || !table.contains(c3))
       return;
-    if(!c1.isSet(c2, c3))
+    if(!Card.isSet(c1, c2, c3))
       return;
     
     table.remove(c1);
@@ -63,7 +63,9 @@ public class Table
         
         while(index3 < table.size())
         {
-          if(n1.isSet(n2, n3))
+
+          
+          if(Card.isSet(n1, n2, n3))
             count++;
           
           index3++;
