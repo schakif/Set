@@ -47,6 +47,8 @@ public class Table
     int index2 = 1;
     int index3 = 2;
     
+    LinkedList<Set> setList = new LinkedList<Set>();
+    
     Card n1 = null;
     
     if (table.size() > 0) {
@@ -63,8 +65,13 @@ public class Table
         
         while(index3 < table.size())
         {
-          if(n1.isSet(n2, n3))
-            count++;
+          if(n1.isSet(n2, n3)) {
+        	  count++;
+        	  
+        	  
+        	  setList.add(new Set(n1,n2,n3));
+          }
+            
           
           index3++;
           if (index3 < table.size()) {
