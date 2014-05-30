@@ -1,3 +1,7 @@
+/**
+ * This class makes an ArrayList of Cards.
+ */
+
 package game;
 
 import java.util.ArrayList;
@@ -11,6 +15,12 @@ public class Table {
 		table = new LinkedList<Card>();
 	}
 
+	/**
+	 * This method adds a Card to the table.
+	 * 
+	 * @param card
+	 *            that will be added: card
+	 */
 	public void add(Card card) {
 		table.addFirst(card);
 	}
@@ -64,39 +74,71 @@ public class Table {
 			if (!newCards.isEmpty())
 				table.set(indexes[2], newCards.remove(0));
 		}
-		slideDownCards();//always make sure we are slid down
+		slideDownCards();// always make sure we are slid down
 		return newCards;
 	}
 
 	private void slideDownCards() {
 		// put the last card in the first empty space
-		for (int j = 0; j < table.size()-1; j++) {
+		for (int j = 0; j < table.size() - 1; j++) {
 			if (table.get(j) == null) {
 				table.set(j, table.removeLast());
 				j--;// make sure that space isn't still null
 			}
 		}
-		if(table.getLast() == null){
+		if (table.getLast() == null) {
 			table.removeLast();
 		}
 	}
 
+	/**
+	 * This is a query method that returns the number of cards on the table.
+	 * 
+	 * @return
+	 */
 	public int numCards() {
 		return table.size();
 	}
+
+	/**
+	 * This method returns a card at a specific index of the table.
+	 * 
+	 * @param the
+	 *            index of the card that needs to be removed
+	 * @return
+	 */
 
 	public Card getCard(int index) {
 		return table.get(index);
 	}
 
-	public int numSets() {
-		int count = 0;
+	/**
+	 * This is a query method that returns the number of sets on a given table.
+	 * 
+	 * @return
+	 */
 
+	public int numSets() {
+		LinkedList<Set> l1 = returnSets();
+		return l1.size();
+
+	}
+
+	/**
+	 * This method returns a LinkedList of arrays of sets. It will return all of
+	 * the sets on the table.
+	 * 
+	 * @return
+	 */
+
+	public LinkedList<Set> returnSets() {
 		int index1 = 0;
 		int index2 = 1;
 		int index3 = 2;
 
 		Card n1 = null;
+
+		LinkedList<Set> setList = new LinkedList<Set>();
 
 		if (table.size() > 0) {
 			n1 = table.get(index1);
@@ -110,8 +152,12 @@ public class Table {
 
 				while (index3 < table.size()) {
 
-					if (Card.isSet(n1, n2, n3))
-						count++;
+					if (Card.isSet(n1, n2, n3)) {
+
+						Set s = new Set(n1, n2, n3);
+						setList.add(s);
+
+					}
 
 					index3++;
 					if (index3 < table.size()) {
@@ -138,7 +184,6 @@ public class Table {
 
 		}
 
-		return count;
+		return setList;
 	}
-
 }
