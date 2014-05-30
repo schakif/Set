@@ -17,7 +17,7 @@ public class TableTest extends TestCase
     // do anything.
     t.removeSet(new Card(1, 1, 1, 1),
              new Card(2, 2, 2, 2),
-             new Card(3, 3, 3, 3));
+             new Card(3, 3, 3, 3),null);
     
     assertEquals(0, t.numCards());
     assertEquals(0, t.numSets());
@@ -53,7 +53,7 @@ public class TableTest extends TestCase
     Card c3 = new Card(3, 3, 3, 3);
     
     // This will result in a middle remove, a head remove and a tail remove
-    t.removeSet(c2, c3, c1);
+    t.removeSet(c2, c3, c1,null);
     
     assertEquals(0, t.numCards());
     assertEquals(0, t.numSets());
@@ -68,7 +68,7 @@ public class TableTest extends TestCase
     Card c3 = new Card(3, 3, 3, 1);
 
     // These cards form a set, but are not on the table
-    t.removeSet(c1, c2, c3);
+    t.removeSet(c1, c2, c3,null);
     
     assertEquals(3, t.numCards());
   }
@@ -83,7 +83,7 @@ public class TableTest extends TestCase
     Card c3 = new Card(2, 2, 2, 3);
 
     // these cards are all on the table, but they do not form a set.
-    t.removeSet(c1, c2, c3);
+    t.removeSet(c1, c2, c3,null);
         
     assertEquals(3, t.numCards());
   }
@@ -96,7 +96,7 @@ public class TableTest extends TestCase
     Card c3 = new Card(1, 1, 1, 3);
 
     // c1 and c2 are on the table, but c3 is not.  The cards from a set
-    t.removeSet(c1, c2, c3);
+    t.removeSet(c1, c2, c3,null);
     
     assertEquals(3, t.numCards());
   }
@@ -113,7 +113,7 @@ public class TableTest extends TestCase
     // 1 2 1 2  (first card)
     t.removeSet(new Card(1, 1, 1, 3),
                 new Card(1, 3, 1, 1),
-                new Card(1, 2, 1, 2));
+                new Card(1, 2, 1, 2),null);
     
     assertEquals(9, t.numCards());
     // that removed 6 of the 14 sets.
@@ -124,7 +124,7 @@ public class TableTest extends TestCase
     // 1 1 3 1 (middle)
     t.removeSet(new Card(1, 1, 1, 1),
                 new Card(1, 1, 2, 1),
-                new Card(1, 1, 3, 1));
+                new Card(1, 1, 3, 1),null);
     
     assertEquals(6, t.numCards());
     // only one set left.

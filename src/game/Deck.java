@@ -84,12 +84,18 @@ public class Deck
     
   public Card getNext()
   {
-    if(nextCardIndex > 80)
+    if(nextCardIndex > theCards.size() -1)
       return null;
     
     Card ret = theCards.get(nextCardIndex);
     nextCardIndex++;
     
     return ret;
+  }
+  /**
+   * adds the last card drawn back onto the top of the deck
+   */
+  public void backUp(){
+	  nextCardIndex--;
   }
 }

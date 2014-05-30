@@ -1,4 +1,7 @@
 package game;
+
+import java.util.ArrayList;
+
 public class Game
 {
   private Table t;
@@ -78,25 +81,17 @@ public class Game
           
           if(Card.isSet(c1, c2, c3))
           {
-            t.removeSet(c1, c2, c3);
-
-            // If there are 12 or more cards on the table,
-            // we do not add cards this round.
-            if(t.numCards() < 12)
-            {
-              // there may or may not be cards left in the deck
-              if(d.hasNext())
-                t.add(d.getNext());
-            
-              if(d.hasNext())
-                t.add(d.getNext());
-              
-              if(d.hasNext())
-                t.add(d.getNext());
+        	ArrayList<Card> nextCards = new ArrayList<Card>(3);
+        	for(int goddamntoomanyloops=0; goddamntoomanyloops<3;goddamntoomanyloops++){
+        		if(d.hasNext()){
+        			nextCards.add(d.getNext());
+        		}
+        	}
+        	
+            nextCards = t.removeSet(c1, c2, c3,nextCards);
+            for(@SuppressWarnings("unused") Card c: nextCards){
+            	d.backUp();
             }
-            
-            // regardless of whether we add cards, we are done
-            // when we find a set.
             return;
           }
         }
