@@ -1,5 +1,4 @@
 package game;
-
 import java.util.ArrayList;
 
 public class Table
@@ -47,6 +46,7 @@ public class Table
     int index2 = 1;
     int index3 = 2;
     
+    
     Card n1 = null;
     
     if (table.size() > 0) {
@@ -63,7 +63,6 @@ public class Table
         
         while(index3 < table.size())
         {
-
           
           if(Card.isSet(n1, n2, n3))
             count++;
