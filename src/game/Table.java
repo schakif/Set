@@ -1,4 +1,9 @@
+/**
+ * This class makes an ArrayList of Cards.
+ */
+
 package game;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -12,16 +17,22 @@ public class Table
     table = new ArrayList<Card>();
   }
   
+  /**
+   * This method adds a Card to the table.
+   * @param card that will be added: card
+   */
+  
   public void add(Card card)
   {	  
 	  table.add(0, card);
   }
   
   /**
-   * 
-   * @param c1
-   * @param c2
-   * @param c3
+   * This method take three cards that are a set as parameters, and removes those cards from the table. It checks to make sure that 
+   * the cards are in a set.  If they aren't, it returns early.
+   * @param first card in set: c1
+   * @param second card in set: c2
+   * @param third card in set:  c3
    */
   public void removeSet(Card c1, Card c2, Card c3)
   {
@@ -34,16 +45,32 @@ public class Table
     table.remove(c2);
     table.remove(c3);
   }  
+  
+  /**
+   * This is a query method that returns the number of cards on the table.
+   * @return
+   */
 
   public int numCards()
   {  
 	  return table.size();
   }
   
+  /**
+   * This method returns a card at a specific index of the table.
+   * @param the index of the card that needs to be removed
+   * @return
+   */
+  
   public Card getCard(int index)
   {
 	  return table.get(index);
   }
+  
+  /**
+   * This method returns a LinkedList of arrays of sets.  It will return all of the sets on the table.
+   * @return
+   */
   
   public LinkedList<Set> returnSets()
   {        
@@ -105,6 +132,11 @@ public class Table
     
     return setList;
   }
+  
+  /**
+   * This is a query method that returns the number of sets on a given table.
+   * @return
+   */
   
   public int numSets(){
        LinkedList<Set> l1 = returnSets();
